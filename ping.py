@@ -1,7 +1,7 @@
 import pygame
 
-width = 800
-height = 600
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 
 UP_RIGHT = 0
 DOWN_RIGHT = 1
@@ -19,7 +19,7 @@ BALL_HEIGHT = 40
 RACKET_WIDTH = 120
 
 def main():
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Ping Pong")
     pygame.display.flip()
 
@@ -63,7 +63,7 @@ def main():
             Playing = False
 
         if keys_pressed[pygame.K_RIGHT]:
-            if racket_x < (width - RACKET_WIDTH):
+            if racket_x < (SCREEN_WIDTH - RACKET_WIDTH):
                 racket_x += 10
 
         if keys_pressed[pygame.K_LEFT]:
@@ -72,7 +72,7 @@ def main():
 
         if InGame:
             if ball_direction == UP_RIGHT:
-                if ball_x >= (width - BALL_WIDTH):
+                if ball_x >= (SCREEN_WIDTH - BALL_WIDTH):
                     ball_direction = UP_LEFT
                 elif ball_y <= 0:
                     ball_direction = DOWN_RIGHT
@@ -80,9 +80,9 @@ def main():
                     ball_x += ball_speed
                     ball_y -= ball_speed
             elif ball_direction == DOWN_RIGHT:
-                if ball_x >= (width - BALL_WIDTH):
+                if ball_x >= (SCREEN_WIDTH - BALL_WIDTH):
                     ball_direction = DOWN_LEFT
-                elif ball_y >= (height - BALL_HEIGHT):
+                elif ball_y >= (SCREEN_HEIGHT - BALL_HEIGHT):
                     ball_direction = UP_RIGHT
                     ball_x = BALL_INITIAL_X
                     ball_y = BALL_INITIAL_Y
@@ -94,7 +94,7 @@ def main():
             elif ball_direction == DOWN_LEFT:
                 if ball_x <= 0:
                     ball_direction = DOWN_RIGHT
-                elif ball_y >= (height - BALL_HEIGHT):
+                elif ball_y >= (SCREEN_HEIGHT - BALL_HEIGHT):
                     ball_direction = UP_RIGHT
                     ball_x = BALL_INITIAL_X
                     ball_y = BALL_INITIAL_Y
@@ -122,7 +122,7 @@ def main():
         screen.blit(ball, (ball_x, ball_y))
 
         if lifes > 0:
-            initial_x = width - 30
+            initial_x = SCREEN_WIDTH - 30
 
             for l in range(lifes):
                 screen.blit(life, (initial_x, 0))
@@ -133,4 +133,5 @@ def main():
 
         pygame.display.flip()
 
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    main()
