@@ -124,7 +124,7 @@ def main():
         if lifes > 0:
             initial_x = SCREEN_WIDTH - 30
 
-            for l in range(lifes):
+            for _ in range(lifes):
                 screen.blit(life, (initial_x, 0))
                 initial_x -= 40
         else:
